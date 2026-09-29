@@ -42,7 +42,7 @@ export class BillingPage {
 
         this.continueButton = page.locator("#billing-buttons-container input.button-1");
 
-        this .continueButton2=page.locator('input.button-1.new-address-next-step-button:visible');
+        this .continueButton2=page.locator("//input[@onclick='Shipping.save()']");
 
     }
 

@@ -1,6 +1,6 @@
 import { test, expect } from "../fixtures/baseTest";
 
-test("Valid Billing Address", async ({page,
+test.only("Valid Billing Address", async ({page,
     login,
     searchPage,
     productDetailsPage,
