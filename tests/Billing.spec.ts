@@ -1,6 +1,6 @@
 import { test, expect } from "../fixtures/baseTest";
 
-test.only("Valid Billing Address", async ({page,
+test("Valid Billing Address", async ({page,
     login,
     searchPage,
     productDetailsPage,
@@ -14,7 +14,7 @@ test.only("Valid Billing Address", async ({page,
    // await shoppingcartPage.clearCart();
 
     // Search Product
-    await searchPage.searchProduct("Smartphone");
+    await searchPage.searchProduct("Smartphone")
 
     // Open Product
     await productDetailsPage.openProduct("Smartphone");
