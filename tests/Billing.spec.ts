@@ -37,7 +37,8 @@ test.only("Valid Billing Address", async ({page,
     // Continue
     await billingPage.clickContinue();
 
-    await  billingPage.clickContinue1();await page.pause();
+    await  billingPage.clickContinue1();
+    await page.pause();
 
 
 });
