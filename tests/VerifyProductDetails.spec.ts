@@ -1,7 +1,7 @@
 import {expect,test} from "../fixtures/baseTest";
 import {ProductDetailsPage} from "../pages/ProductDetailsPage";
 import {SearchPage} from "../pages/SearchPage";
-import {config} from "../config/configreader";
+import {config} from "../config/Configreader";
 
 test("Valid Search", async ({ page, login }) => {
     const productDetailPage = new ProductDetailsPage(page);

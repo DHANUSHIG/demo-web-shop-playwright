@@ -1,5 +1,5 @@
 import { expect, test } from "../fixtures/baseTest";
-import { config } from "../config/configreader";
+import { config } from "../config/Configreader";
 import { AddTOCartPage } from "../pages/AddTOCartPage";
 
 test("Valid Cart Quantity", async ({ page, login, searchPage, productDetailsPage }) => {
