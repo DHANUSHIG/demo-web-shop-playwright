@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { Logindata } from '../testdata/logindata';
-import { config } from '../config/Configreader';
+import { config } from '../config/ConfigReader';
 
 test.beforeEach(async ({ page }) => {
     await page.goto(config.baseUrl);

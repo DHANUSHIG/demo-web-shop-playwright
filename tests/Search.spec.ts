@@ -1,6 +1,6 @@
 import {expect,test} from '@playwright/test';
 import {LoginPage} from '../pages/LoginPage';
-import {config} from '../config/Configreader';
+import {config} from '../config/ConfigReader';
 import {SearchPage} from '../pages/SearchPage';
 
 test.beforeEach(async ({page})=>{

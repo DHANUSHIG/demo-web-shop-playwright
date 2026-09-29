@@ -1,6 +1,6 @@
 import { test as base } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
-import { config } from '../config/Configreader';
+import { config } from '../config/ConfigReader';
 import { AddTOCartPage } from '../pages/AddTOCartPage';
 import { ProductDetailsPage } from '../pages/ProductDetailsPage';
 import { SearchPage } from '../pages/SearchPage';

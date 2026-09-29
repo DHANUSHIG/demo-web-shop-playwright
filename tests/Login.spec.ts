@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
-import { config } from '../config/Configreader';
+import { config } from '../config/ConfigReader';
 test("LoginTest", async ({ page }) => {
     const loginpage = new LoginPage(page);
     await page.goto(config.baseUrl);

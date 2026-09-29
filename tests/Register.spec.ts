@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { config } from '../config/Configreader';
+import { config } from '../config/ConfigReader';
 import { RegisterPage } from '../pages/RegisterPage';
 import { RandomData } from '../utils/RandomData';
 
