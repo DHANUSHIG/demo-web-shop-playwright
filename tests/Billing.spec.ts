@@ -38,7 +38,7 @@ test("Valid Billing Address", async ({page,
     await billingPage.clickContinue();
 
     await  billingPage.clickContinue1();
-    await page.pause();
+    await expect(billingPage.shippingMethodSection).toBeVisible();
 
 
 });

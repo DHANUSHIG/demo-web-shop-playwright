@@ -1,16 +1,7 @@
 import { expect, test } from "../fixtures/baseTest";
 
 test("Valid checkout", async ({ shoppingcartPage, login, searchPage, productDetailsPage, checkoutpage, addToCartPage }) => {
-    await shoppingcartPage.Clickcart();
-    if (await shoppingcartPage.isCartEmpty()) {
-        await expect(shoppingcartPage.EmptyCartMesssage).toBeVisible();
-    }
-    else {
-        await shoppingcartPage.SelectCheckBox();
-        await shoppingcartPage.UpdateCart("0");
-        await shoppingcartPage.EmptyCart();
-        await expect(shoppingcartPage.EmptyCartMesssage).toBeVisible();
-    }
+    await shoppingcartPage.clearCart();
 
     await searchPage.searchProduct("phone");
     await productDetailsPage.openProduct("Smartphone");
@@ -20,4 +11,19 @@ test("Valid checkout", async ({ shoppingcartPage, login, searchPage, productDeta
     await checkoutpage.Checkterms();
     await checkoutpage.clickCheckout();
     await expect(checkoutpage.BillingPage).toBeVisible();
+});
+
+test("Checkout - Terms of service rejection displays warning modal", async ({ shoppingcartPage, login, searchPage, productDetailsPage, checkoutpage, addToCartPage }) => {
+    await shoppingcartPage.clearCart();
+
+    await searchPage.searchProduct("phone");
+    await productDetailsPage.openProduct("Smartphone");
+    await addToCartPage.addToCart();
+    await shoppingcartPage.Clickcart();
+
+    // Intentionally do NOT check terms of service
+    await checkoutpage.clickCheckout();
+
+    await expect(checkoutpage.termsWarningBox).toBeVisible();
+    await expect(checkoutpage.termsWarningBox).toContainText("Please accept the terms of service before the next step.");
 });
