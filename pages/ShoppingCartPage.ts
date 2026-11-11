@@ -9,6 +9,8 @@ export class ShoppingCartPage {
     readonly updateCratValue: Locator;
     readonly updateCartButton: Locator;
     readonly EmptyCartMesssage: Locator;
+    readonly productSubtotal: Locator;
+    readonly orderTotal: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -18,6 +20,8 @@ export class ShoppingCartPage {
         this.updateCratValue = page.locator('input.qty-input').first();
         this.updateCartButton = page.locator('[name="updatecart"]');
         this.EmptyCartMesssage = page.getByText('Your Shopping Cart is empty!', { exact: true });
+        this.productSubtotal = page.locator('span.product-subtotal').first();
+        this.orderTotal = page.locator('.product-price.order-total').first();
     }
 
     async Clickcart() {

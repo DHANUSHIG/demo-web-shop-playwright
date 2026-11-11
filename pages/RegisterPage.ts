@@ -14,6 +14,10 @@ export class RegisterPage {
     readonly RegisterButton: Locator;
     readonly emailExistsError: Locator;
     readonly confirmPasswordError: Locator;
+    readonly firstNameRequiredError: Locator;
+    readonly lastNameRequiredError: Locator;
+    readonly emailRequiredError: Locator;
+    readonly passwordRequiredError: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -28,6 +32,10 @@ export class RegisterPage {
         this.RegisterButton = page.getByRole('button', { name: 'Register' });
         this.emailExistsError = page.locator('.validation-summary-errors');
         this.confirmPasswordError = page.locator('span[data-valmsg-for="ConfirmPassword"]');
+        this.firstNameRequiredError = page.locator('span[data-valmsg-for="FirstName"]');
+        this.lastNameRequiredError = page.locator('span[data-valmsg-for="LastName"]');
+        this.emailRequiredError = page.locator('span[data-valmsg-for="Email"]');
+        this.passwordRequiredError = page.locator('span[data-valmsg-for="Password"]');
     }
 
     async Register(firstname: string, lastname: string, email: string, password: string, confirmPassword: string) {

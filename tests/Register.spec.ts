@@ -53,4 +53,22 @@ test.describe("Registration Tests", () => {
         await expect(registerPage.confirmPasswordError).toBeVisible();
         await expect(registerPage.confirmPasswordError).toHaveText('The password and confirmation password do not match.');
     });
+
+    test.only("Register - Submitting empty form displays required field errors", async ({ page }) => {
+        const registerPage = new RegisterPage(page);
+        await registerPage.RegisterPage.click();
+        await registerPage.RegisterButton.click();
+
+        await expect(registerPage.firstNameRequiredError).toBeVisible();
+        await expect(registerPage.firstNameRequiredError).toHaveText("First name is required.");
+
+        await expect(registerPage.lastNameRequiredError).toBeVisible();
+        await expect(registerPage.lastNameRequiredError).toHaveText("Last name is required.");
+
+        await expect(registerPage.emailRequiredError).toBeVisible();
+        await expect(registerPage.emailRequiredError).toHaveText("Email is required.");
+
+        await expect(registerPage.passwordRequiredError).toBeVisible();
+        await expect(registerPage.passwordRequiredError).toHaveText("Password is required.");
+    });
 });
