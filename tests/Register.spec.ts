@@ -54,7 +54,7 @@ test.describe("Registration Tests", () => {
         await expect(registerPage.confirmPasswordError).toHaveText('The password and confirmation password do not match.');
     });
 
-    test.only("Register - Submitting empty form displays required field errors", async ({ page }) => {
+    test("Register - Submitting empty form displays required field errors", async ({ page }) => {
         const registerPage = new RegisterPage(page);
         await registerPage.RegisterPage.click();
         await registerPage.RegisterButton.click();
