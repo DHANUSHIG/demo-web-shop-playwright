@@ -3,7 +3,7 @@ import {ProductDetailsPage} from "../pages/ProductDetailsPage";
 import {SearchPage} from "../pages/SearchPage";
 import {config} from "../config/ConfigReader";
 
-test("Valid Search", async ({ page, login }) => {
+test("Valid Search with valid product details", async ({ page, login }) => {
     const productDetailPage = new ProductDetailsPage(page);
     const searchPage = new SearchPage(page);
     await searchPage.searchProduct("phone");

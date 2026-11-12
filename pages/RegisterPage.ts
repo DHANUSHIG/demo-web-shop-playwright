@@ -1,5 +1,4 @@
 import { Locator, Page } from "@playwright/test";
-import { RandomData } from "../utils/RandomData";
 
 export class RegisterPage {
     readonly page: Page;
@@ -13,19 +12,32 @@ export class RegisterPage {
     readonly Password: Locator;
     readonly ConfirmPassword: Locator;
     readonly RegisterButton: Locator;
+    readonly emailExistsError: Locator;
+    readonly confirmPasswordError: Locator;
+    readonly firstNameRequiredError: Locator;
+    readonly lastNameRequiredError: Locator;
+    readonly emailRequiredError: Locator;
+    readonly passwordRequiredError: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.RegisterPage =  page.getByRole('link', { name: 'Register' });
-        this.GenderMale =  page.locator('#gender-male');
-        this.GenderFemale =  page.locator('#gender-female');
-        this.FirstName =  page.getByRole('textbox', { name: 'First name' });
-        this.LastName =  page.getByRole('textbox', { name: 'Last name' });
-        this.Email =  page.getByRole('textbox', { name: 'Email' });
+        this.RegisterPage = page.getByRole('link', { name: 'Register' });
+        this.GenderMale = page.locator('#gender-male');
+        this.GenderFemale = page.locator('#gender-female');
+        this.FirstName = page.getByRole('textbox', { name: 'First name' });
+        this.LastName = page.getByRole('textbox', { name: 'Last name' });
+        this.Email = page.getByRole('textbox', { name: 'Email' });
         this.Password = page.locator('#Password');
         this.ConfirmPassword = page.locator('#ConfirmPassword');
-        this.RegisterButton =  page.getByRole('button', { name: 'Register' });
+        this.RegisterButton = page.getByRole('button', { name: 'Register' });
+        this.emailExistsError = page.locator('.validation-summary-errors');
+        this.confirmPasswordError = page.locator('span[data-valmsg-for="ConfirmPassword"]');
+        this.firstNameRequiredError = page.locator('span[data-valmsg-for="FirstName"]');
+        this.lastNameRequiredError = page.locator('span[data-valmsg-for="LastName"]');
+        this.emailRequiredError = page.locator('span[data-valmsg-for="Email"]');
+        this.passwordRequiredError = page.locator('span[data-valmsg-for="Password"]');
     }
+
     async Register(firstname: string, lastname: string, email: string, password: string, confirmPassword: string) {
         await this.RegisterPage.click();
         await this.GenderMale.check();
@@ -35,7 +47,5 @@ export class RegisterPage {
         await this.Password.fill(password);
         await this.ConfirmPassword.fill(confirmPassword);
         await this.RegisterButton.click();
-        
     }
-    
 }

@@ -3,22 +3,22 @@ import { LoginPage } from '../pages/LoginPage';
 import { Logindata } from '../testdata/logindata';
 import { config } from '../config/ConfigReader';
 
-test.beforeEach(async ({ page }) => {
-    await page.goto(config.baseUrl);
-});
-
-test("Verify Login using Data Driven Testing", async ({ page }) => {
-    const loginpage = new LoginPage(page);
+test.describe("Data Driven Login Tests", () => {
+    test.beforeEach(async ({ page }) => {
+        await page.goto(config.baseUrl);
+    });
 
     for (const data of Logindata) {
-        await loginpage.Loginpage.click();
-        await loginpage.login(data.Email, data.Password);
-        if (data.expectedResult === "Pass") {
-            await expect(loginpage.logoutButton).toBeVisible();
-            await loginpage.logoutButton.click();
-        }
-        else if (data.expectedResult === "Fail") {
-            await expect(loginpage.ErrorMessage).toBeVisible();
-        }
+        test(`Login with ${data.scenario}`, async ({ page }) => {
+            const loginPage = new LoginPage(page);
+            await loginPage.Loginpage.click();
+            await loginPage.login(data.Email, data.Password);
+
+            if (data.expectedResult === "Pass") {
+                await expect(loginPage.logoutButton).toBeVisible();
+            } else if (data.expectedResult === "Fail") {
+                await expect(loginPage.ErrorMessage).toBeVisible();
+            }
+        });
     }
 });

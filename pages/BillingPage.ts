@@ -17,7 +17,8 @@ export class BillingPage {
     readonly zipCode: Locator;
     readonly phoneNumber: Locator;
     readonly continueButton: Locator;
-    readonly continueButton2:Locator;
+    readonly continueButton2: Locator;
+    readonly shippingMethodSection: Locator;
 
     constructor(page: Page) {
 
@@ -43,6 +44,7 @@ export class BillingPage {
         this.continueButton = page.locator("#billing-buttons-container input.button-1");
 
         this .continueButton2=page.locator("//input[@onclick='Shipping.save()']");
+        this.shippingMethodSection = page.locator("#opc-shipping_method");
 
     }
 

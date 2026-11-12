@@ -6,3 +6,12 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Runtime Logs
+logs/
+*.log
